@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Example </title>
+	<meta http-equiv="Content-Type" content="charset=utf-8" />
+	
+	<script type='text/javascript' src='../src/QCore.js'></script>
+	<script type='text/javascript' src='../src/QTool.js'></script>
+</head>
+<body>
+	
+</body>
+<script>
+	console.log('%c[NOTE] To load workers, server is needed', 'color:orange');
+	console.log('%c[NOTE] Try [shift + space] for QTool', 'color:orange');
+	console.log('%c[LOADED] %c[Name: %s]', 'color:green', 'color:black', '/Main');
+	
+	QDefine({
+		is: 'thread',
+		name: '/Main'
+	});
+	
+	QModule('modules/a.js');
+	
+	QThread('thread_1.js');
+	QThread('thread_2.js');
+	
+	//To load workers, server is needed
+	//if you have pyton, try [python -m SimpleHTTPServer 8080] from the example parent folder, next [localhost:8080/example] in browser
+	//Uncomment strings located below, one by one with update browser page
+	
+	//1. Same thread call
+	//QCall( QRoot, null, 1, 'Test/A/f1', 'same_thread' );
+	
+	//2. Different thread call
+	//QCall( QRoot, null, 1, 'Test/B/f1', 'diff_thread' );
+	
+	//3. Any thread call
+	//QCall( QRoot, null, 1, 'Test/A/f2', 'any_thread' );
+	
+	
+</script>
+</html>
+
+
