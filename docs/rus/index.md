@@ -35,10 +35,10 @@
 Представлен QModule [[подробнее]](./service_define_any.md)
 
 ### Сервис асинхронных вызовов функций
-Представлен QCall, QBack [[подробнее]](./service_asunc_function.md)
+Представлен QCall, QBack [[подробнее]](./service_async_function.md)
 
 ### Сервис асинхронных сообщений
-Представлен QSend [[подробнее]](./service_asunc_message.md)
+Представлен QSend [[подробнее]](./service_async_message.md)
 
 ### Сервис рабочего набора
 Представлен QList [[подробнее]](./service_work_list.md)
