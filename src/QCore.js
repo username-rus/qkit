@@ -267,14 +267,6 @@ QCall = function ( cur, name, arg )
 	
 	var mod = Q.list[index];
 	
-	if ( cur && typeof(cur) != 'string' )
-	{
-		if ( !cur.size[name] ) 
-			{cur.size[name] = 1; cur.size['full']++;}
-		else 
-			{cur.size[name]++; cur.size['full']++;}
-	}
-	
 	if ( typeof(mod.ptr) == 'string' )
 	{
 		var id = Q['name'] + '#' + Q['random'].local++;
@@ -295,8 +287,11 @@ QCall = function ( cur, name, arg )
 			arg: arg, ret: null
 		}
 		
+		/*
 		try {mod.ptr[nameMet](next);}
 		catch (e) {Q['utils'].errorPrintNext(next, Q['utils'].errorPrintBegin(e));}
+		*/
+		mod.ptr[nameMet](next);
 	}
 	
 	return;
@@ -336,10 +331,16 @@ QBack = function ( cur, res )
 	}
 	else
 	{
+		var name = prev.name;
 		var nameMod = name.substring(0, name.lastIndexOf('/'));
 		var nameMet = name.substring(name.lastIndexOf('/') + 1, name.length);
 		var index = Q.map[nameMod];
 		var mod = Q.list[index];
+		
+		if ( !prev.size[cur.name] ) 
+			{prev.size[cur.name] = 1; prev.size['full']++;}
+		else 
+			{prev.size[cur.name]++; prev.size['full']++;}
 		
 		cur.back = null;
 		cur.size = null;
@@ -348,8 +349,11 @@ QBack = function ( cur, res )
 		prev.ret = res;
 		prev.from = '#' + cur.name;
 		
+		/*
 		try {mod.ptr[nameMet](prev);}
 		catch (e) {Q['utils'].errorPrintNext(prev, Q['utils'].errorPrintBegin(e));}
+		*/
+		mod.ptr[nameMet](prev);
 	}
 	
 	return;
